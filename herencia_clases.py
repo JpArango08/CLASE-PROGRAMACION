@@ -45,7 +45,7 @@ class Estudiante(Persona):
         super().__init__(nombre)
         self.carrera=carrera
     def presentar(self):
-        print(f"{self.nombre} se está presentando")
+        print(f"{self.nombre} se está presentando y está estudiante {self.carrera}")
 
 Persona1=Estudiante("Juan","Ingeniería")
 Persona1.presentar()

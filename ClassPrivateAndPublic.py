@@ -4,6 +4,7 @@ class Persona:
         self.nombre=nombre
         self.__cedula=cedula    #2. Esto es un atributo privado
     def obtener_documento(self):
+        print("Cedula: ", self.__cedula)
         if self.__cedula is not None:
             return self.__cedula               #4. Encapsular la cedula o forma de retornar el atrbuto privado
         else:
