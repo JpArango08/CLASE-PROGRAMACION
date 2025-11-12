@@ -3,7 +3,7 @@ class Empleado:
         self.__nombre=nombre
         self.__documento=documento
         self.__edad=edad
-    
+
     def mostrar_datos(self):
         return {"Nombre": self.__nombre ,"Documento": self.__documento, "Edad": self.__edad}  #Diccionario
 

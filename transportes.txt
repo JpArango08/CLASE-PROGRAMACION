@@ -1,0 +1,3 @@
+Bicicleta,15, 10, 2000
+Moto,50, 50, 5000
+Furgoneta,500, 60, 10000
