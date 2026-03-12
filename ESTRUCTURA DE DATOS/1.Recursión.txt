@@ -1,0 +1,9 @@
+Recursión es repetición.
+Funciones recursivas quiere decir dividir un problema en otros subproblemas. Enfocandose en resolverlos, para luego juntarlos
+y resolver el problema
+
+print retorna None, es diferente a imprimir en pantalla.
+Python Tutor (pinta de arriba hacia abajo el call stack)
+
+-CASO RECURSIVO: lo que repito --> Solucion a mi subproblema
+-CASO BASE: Restricción que me hace frenar
