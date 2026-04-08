@@ -294,7 +294,7 @@ def process_actions(actions: list[str]) -> str:
 
 print(process_actions(["WRITE Hola", "WRITE  Mundo", "UNDO"]))
 """
-
+"""
 from typing import Optional,Any
 
 class NodeSingly:
@@ -421,4 +421,157 @@ print(completion_order([("A", 1), ("B", 1), ("C", 1)], 2))
 
 print(completion_order([("Carlos", 4)], 2))
 # Esperado: ["Carlos"]
-      
+"""
+
+#Hay una cola de enteros, me dan la cola y un número k y encontrar un grupo de que hay entre dos números iguales a k y eliminar la mitad de la pos que hay en el grupo 
+
+from typing import Optional,Any
+
+class NodeSingly:
+  def __init__(self, value: Any, next = None) -> None:
+    self.value = value
+    self.next = next
+
+  def __repr__(self) -> str:
+    return f"{self.value}"
+
+class SinglyLinkedList:
+  def __init__(self) -> None:
+    self.head: Optional[NodeSingly] = None
+    self.tail: Optional[NodeSingly] = None
+    self.size: int = 0
+
+  def append(self, value: Any) -> None:
+    new_node = NodeSingly(value)
+    if not self.head:
+      self.head = self.tail = new_node
+    else:
+      assert self.tail is not None
+      self.tail.next = new_node
+      self.tail = new_node
+
+    self.size += 1
+
+  def delete_and_return_last(self) -> Any:
+    #llegando al penúltimo
+    if(self.size == 1):
+      old_tail = self.head
+      self.head = None
+      self.tail = None
+      self.size -= 1
+      return old_tail.value
+
+    current = self.head
+    while(current.next != self.tail):
+      current = current.next
+
+    old_tail = self.tail
+    self.tail = current
+    self.tail.next = None
+
+    self.size -= 1
+    return old_tail.value
+
+  def delete_and_return_first(self) -> Any:
+    if(self.head is None):
+      return None
+
+    old_head = self.head
+    self.head = self.head.next
+    old_head.next = None
+    self.size -= 1
+    return old_head.value
+
+  def __repr__(self) -> str:
+    values = []
+    current = self.head
+    while current:
+      values.append(str(current.value))
+      current = current.next
+    return " → ".join(values) if values else "[]"
+
+  def __len__(self) -> int:
+    return self.size
+
+class Queue:
+  def __init__(self):
+    self.__queue = SinglyLinkedList()
+
+  def enqueue(self, element: Any) -> None: #Agrega después del First
+    self.__queue.append(element)
+
+  #FIFO -> First in First out
+  def dequeue(self):
+    if(len(self.__queue) == 0):
+      raise Exception("Cola vacía... No podés hacer dequeue")
+
+    return self.__queue.delete_and_return_first()
+
+  def peek(self) -> Any:
+    if(len(self.__queue) == 0):
+      raise Exception("Cola vacía... No podés hacer peek")
+
+    return self.__queue.head.value
+
+  def __len__(self) -> int:
+    return len(self.__queue)
+
+  def __repr__(self) -> str:
+    return str(self.__queue)
+
+def guardar_grupo_lista(Q, k, current):
+  encontrado_grupo= False
+  lista_grupo= []
+  lista_grupo.append(current)
+  current = Q.dequeue()
+  while len(Q) != 0:
+    print("En la otra funcion")
+    lista_grupo.append(current)
+    if current == k:
+      encontrado_grupo= True
+      break
+    current = Q.dequeue()
+  print(lista_grupo)
+  return lista_grupo, encontrado_grupo, Q
+    
+
+def eliminar_entre_k(Q: Queue, k: int):
+  if len(Q) < 2:
+    return
+  cola_aux= Queue()
+  current = Q.dequeue()
+  while len(Q) != 0:
+    if current != k:
+      cola_aux.enqueue(current)
+      current = Q.dequeue()
+      print("Mirando current")
+    else:
+      print("Else")
+      lista_grupo, encontrado_grupo, Q = guardar_grupo_lista(Q,k, current)
+      if encontrado_grupo:
+        if len(lista_grupo) % 2 == 0: 
+            eliminar= int(len(lista_grupo)/2)
+        else:
+            eliminar = int((len(lista_grupo)/2) + 0.5)
+        del lista_grupo[eliminar-1]
+        if len(Q) != 0:
+          while len(Q) != 0:
+            lista_grupo.append(Q.dequeue())      
+        while len(cola_aux) != 0:
+          Q.enqueue(cola_aux.dequeue())
+        for value in lista_grupo:
+          Q.enqueue(value)
+        return Q
+      else:
+        return "No hay grupo"
+Q= Queue()
+Q.enqueue(0)
+Q.enqueue(2)
+Q.enqueue(8)
+Q.enqueue(2)
+Q.enqueue(2)
+Q.enqueue(4)
+Q.enqueue(5)
+print(eliminar_entre_k(Q, 2))
+    
+
