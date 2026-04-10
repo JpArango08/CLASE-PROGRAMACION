@@ -424,7 +424,7 @@ print(completion_order([("Carlos", 4)], 2))
 """
 
 #Hay una cola de enteros, me dan la cola y un número k y encontrar un grupo de que hay entre dos números iguales a k y eliminar la mitad de la pos que hay en el grupo 
-
+"""
 from typing import Optional,Any
 
 class NodeSingly:
@@ -573,5 +573,186 @@ Q.enqueue(2)
 Q.enqueue(4)
 Q.enqueue(5)
 print(eliminar_entre_k(Q, 2))
+"""
     
+from typing import Optional, Any
 
+class NodeSingly:
+  def __init__(self, value: Any, next = None) -> None:
+    self.value = value
+    self.next = next
+
+  def __repr__(self) -> str:
+    return f"{self.value}"
+
+class SinglyLinkedList:
+  def __init__(self) -> None:
+    self.head: Optional[NodeSingly] = None
+    self.tail: Optional[NodeSingly] = None
+    self.size: int = 0
+
+  def append(self, value: Any) -> None:
+    new_node = NodeSingly(value)
+    if not self.head:
+      self.head = self.tail = new_node
+    else:
+      assert self.tail is not None
+      self.tail.next = new_node
+      self.tail = new_node
+
+    self.size += 1
+
+  def delete_and_return_last(self) -> Any:
+    #llegando al penúltimo
+    if(self.size == 1):
+      old_tail = self.head
+      self.head = None
+      self.tail = None
+      self.size -= 1
+      return old_tail.value
+
+    current = self.head
+    while(current.next != self.tail):
+      current = current.next
+
+    old_tail = self.tail
+    self.tail = current
+    self.tail.next = None
+
+    self.size -= 1
+    return old_tail.value
+
+  def delete_and_return_first(self) -> Any:
+    if(self.head is None):
+      return None
+
+    old_head = self.head
+    self.head = self.head.next
+    old_head.next = None
+    self.size -= 1
+    return old_head.value
+
+  def __repr__(self) -> str:
+    values = []
+    current = self.head
+    while current:
+      values.append(str(current.value))
+      current = current.next
+    return " → ".join(values) if values else "[]"
+
+  def __len__(self) -> int:
+    return self.size
+  
+def mayor_frecuencia(lista: SinglyLinkedList):
+  if len(lista) == 0:
+    return
+  current = lista.head
+  frecuencia= 1
+  current_2= current.next
+  max_frecuencia = 0
+  while current is not None:
+    if frecuencia > max_frecuencia:
+      max_frecuencia = frecuencia
+    if current_2 is None:
+      current = current.next
+      if current is None:
+        break
+      current_2= current.next
+      frecuencia= 1
+      continue
+    if current.value == current_2.value:
+      frecuencia += 1
+    current_2 = current_2.next
+
+  current = lista.head
+  frecuencia= 1
+  while current is not None:
+    current_2= current.next
+    while current_2 is not None:
+      if current.value == current_2.value:
+        frecuencia += 1
+      current_2 = current_2.next
+    if frecuencia == max_frecuencia:
+      num_eliminar = current.value
+      break
+    else:
+      current= current.next
+      frecuencia= 1
+  
+  prev= None
+  current = lista.head
+  while current is not None:
+    if current.value == num_eliminar:
+      if current == lista.head:
+        lista.delete_and_return_first()
+        prev = None
+        current= lista.head
+      elif current == lista.tail:
+        lista.delete_and_return_last()
+      else:
+        prev.next= current.next
+        current.next= None
+        current = prev.next
+        prev= prev.next
+      continue
+    prev= current
+    current = current.next    
+  return lista
+
+lista_prueba = SinglyLinkedList()
+lista_prueba.append(1)
+lista_prueba.append(1)
+lista_prueba.append(3)
+lista_prueba.append(4)
+lista_prueba.append(5)
+print(mayor_frecuencia(lista_prueba))
+
+from typing import Any
+
+class Queue:
+  def __init__(self):
+    self.__queue = SinglyLinkedList()
+
+  def enqueue(self, element: Any) -> None: #Agrega después del First
+    self.__queue.append(element)
+
+  #FIFO -> First in First out
+  def dequeue(self):
+    if(len(self.__queue) == 0):
+      raise Exception("Cola vacía... No podés hacer dequeue")
+
+    return self.__queue.delete_and_return_first()
+
+  def peek(self) -> Any:
+    if(len(self.__queue) == 0):
+      raise Exception("Cola vacía... No podés hacer peek")
+
+    return self.__queue.head.value
+
+  def __len__(self) -> int:
+    return len(self.__queue)
+
+  def __repr__(self) -> str:
+    return str(self.__queue)
+
+def par_primos(Q: Queue):
+  if len(Q) == 0:
+    return
+  cola_impares= Queue()
+  while len(Q) != 0:
+    if (Q.peek() % 2) == 0:
+      Q.dequeue()
+      continue
+    cola_impares.enqueue(Q.dequeue())
+  
+  while len(cola_impares) != 0:
+    Q.enqueue(cola_impares.dequeue())
+  
+  return Q
+
+Q= Queue()
+Q.enqueue(1)
+Q.enqueue(2)
+Q.enqueue(3)
+Q.enqueue(4)
+print(par_primos(Q))
