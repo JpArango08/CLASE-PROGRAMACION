@@ -82,7 +82,6 @@ print(f"ex2: {num_in_matrix(m,n2) == 'no existe'}")
 print(f"ex3: {num_in_matrix(m,n3) == (2,2)}")
 
 
-"""
 def cracking_the_list(l, pos: int=0):
   if pos == len(l):
     return ""
@@ -100,4 +99,3 @@ l3 = ["",["",[[""],""],"",""]]
 print(f"ex1: {cracking_the_list(l1)}")
 print(f"ex2: {cracking_the_list(l2)}")
 print(f"ex3: {cracking_the_list(l3)}")
-"""

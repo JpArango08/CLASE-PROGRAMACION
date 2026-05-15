@@ -24,7 +24,7 @@ E2. Dado un string s, retorne el primer caracter en mayúscula que se encuentre 
 
 Para s = "fjasdfFfasdFERfas", el resultado esperado es F"""
 
-"""""
+
 def primer_str(string: str, i: int= 0):
     if i == len(string):
         return ""
@@ -32,7 +32,7 @@ def primer_str(string: str, i: int= 0):
         return string[i]
     else:
         return "" + primer_str(string, i+1)
-print(primer_str("fjasdffasdFERfas")) """""
+print(primer_str("fjasdffasdFERfas"))
 
 
 """""
