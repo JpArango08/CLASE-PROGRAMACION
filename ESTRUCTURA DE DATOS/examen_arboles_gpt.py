@@ -1,6 +1,6 @@
 from collections import deque
 from typing import Any, Optional, List
-
+"""
 class BinaryNode:
     def __init__(self, value: Any):
         self.value = value
@@ -277,31 +277,245 @@ class GeneralTree:
            current.children.remove(hijo)
         else:
             self.borrar_hojas(hijo)   
+"""
+"""
+class BinaryNode:
+    def __init__(self, value: Any):
+        self.value = value
+        self.left: Optional["BinaryNode"] = None
+        self.right: Optional["BinaryNode"] = None
 
-# CASO DE PRUEBA
+    def __repr__(self):
+        return f"{self.value}"
 
-tree = GeneralTree()
+class BinaryTree:
+    def __init__(self):
+        self.root: Optional[BinaryNode] = None
 
-# Crear raíz
-tree.root = Node("A")
+    def insert_by_level(self, values: List[Optional[Any]]) -> None:
+        
+        #Construye el árbol a partir de una lista por niveles.
+        #Usa None para representar nodos vacíos.
+        #Ejemplo:
+         #   tree.insert_by_level([1, 2, 3, None, 5])
+          #  Genera:
+           #       1
+            ##   2   3
+              #   \
+               #   5
+        if not values:
+            return
 
-# Nivel 1
-tree.root.children.append(Node("B"))
-tree.root.children.append(Node("C"))
-tree.root.children.append(Node("D"))
+        # Crear el nodo raíz si el primer valor no es None
+        if values[0] is None:
+            self.root = None
+            return
 
-# Nivel 2
-tree.root.children[0].children.append(Node("E"))
-tree.root.children[0].children.append(Node("F"))
+        self.root = BinaryNode(values[0])
+        queue = deque([self.root])
+        i = 1  # índice de la lista
 
-tree.root.children[1].children.append(Node("G"))
+        while queue and i < len(values):
+            current = queue.popleft()
 
-tree.root.children[2].children.append(Node("H"))
-tree.root.children[2].children.append(Node("I"))
+            # Hijo izquierdo
+            if i < len(values):
+                left_val = values[i]
+                if left_val is not None:
+                    current.left = BinaryNode(left_val)
+                    queue.append(current.left)
+                i += 1
 
-print("ÁRBOL ORIGINAL:\n")
-print(tree)
-tree.eliminar_padre_2_hijos()
-print(tree)
+            # Hijo derecho
+            if i < len(values):
+                right_val = values[i]
+                if right_val is not None:
+                    current.right = BinaryNode(right_val)
+                    queue.append(current.right)
+                i += 1
+
+    def insert(self, parent: Any, value: Any) -> None:
+      
+      #Inserta 'value' como hijo izquierdo o derecho (el primero libre)
+      #del primer nodo cuyo valor sea 'parent', encontrado por DFS (preorden).
+      #Si el árbol está vacío y parent es None, 'value' pasa a ser la raíz.
+
+      new_node = BinaryNode(value)
+
+      # Árbol vacío: permitir crear la raíz si parent es None
+      if self.root is None:
+        if parent is None:
+          self.root = new_node
+        else:
+          print(f"⚠️ Árbol vacío y 'parent' distinto de None ('{parent}'). No se insertó '{value}'.")
+        return
+
+      # DFS recursivo para encontrar la primera ocurrencia de 'parent'
+      def _dfs_insert(node: Optional[BinaryNode]) -> bool:
+        if node is None:
+          return False
+
+        # Visita (preorden): primero el nodo actual
+        if node.value == parent:
+          if node.left is None:
+            node.left = new_node
+            return True
+          if node.right is None:
+            node.right = new_node
+            return True
+          # Ambos hijos ocupados: continuar buscando otra ocurrencia abajo
+
+        # Luego subárbol izquierdo
+        if _dfs_insert(node.left):
+          return True
+        # Luego subárbol derecho
+        return _dfs_insert(node.right)
+
+      if not _dfs_insert(self.root):
+        print(f"⚠️ No se encontró el nodo con valor '{parent}'. No se insertó '{value}'.")
+
+    def print(self, node=None, prefix="", is_left=True, flag=True):
+
+        if flag:
+            node = self.root
+
+        if node is None:
+            print("Empty Tree")
+            return
+
+        # imprimir derecha
+        if node.right is not None:
+            self.print(node.right,
+                      prefix + ("│   " if is_left else "    "),
+                      False,
+                      False)
+
+        # imprimir nodo actual
+        print(prefix + ("└── " if is_left else "┌── ") + str(node.value))
+
+        # imprimir izquierda
+        if node.left is not None:
+            self.print(node.left,
+                      prefix + ("    " if is_left else "│   "),
+                      True,
+                      False)
+    def max_nivel(self):
+       if self.root is None:
+          return
+       por_visitar = []
+       por_visitar.append(self.root)
+       i=0
+       max= 0
+       while len(por_visitar) > 0:
+          if len(por_visitar) > max:
+             max= i
+          
+          current = por_visitar.pop(0)
+
+          if current.right is not None:
+             por_visitar.append(current.right)
+          if current.left is not None:
+             por_visitar.append(current.left)
+
+          i += 1
+"""
+
+from typing import Any
+import random
+
+class BinaryNode:
+  def __init__(self, value: Any):
+    self.value: Any = value
+    self.left = None
+    self.right = None
+
+class BinarySearchTree:
+  def __init__(self):
+    self.root = None
+
+  def insert(self, value, current = None):
+    if(self.root is None):
+      self.root = BinaryNode(value)
+      return
+
+    if(current is None):
+      current = self.root
+
+    if(current.value == value):
+      return
+    elif(current.value < value):
+      if(current.right is None):
+        current.right = BinaryNode(value)
+        return
+
+      return self.insert(value, current.right)
+    else:
+      if(current.left is None):
+        current.left = BinaryNode(value)
+        return
+
+      return self.insert(value, current.left)
+
+  def print(self, node, prefix="", is_left=True):
+    if not node:
+      print("Empty Tree")
+      return
+    if node.right:
+      self.print(node.right, prefix + ("│   " if is_left else "    "), False)
+    print(prefix + ("└── " if is_left else "┌── ") + str(node.value))
+    if node.left:
+      self.print(node.left, prefix + ("    " if is_left else "│   "), True)
+  
+  def ancestro_comun(self, min, max, current=None):
+    if self.root is None:
+      return
+    if current is None:
+      current = self.root
+    if min >= max:
+      return
+    if min < current.value and max < current.value:
+      return self.ancestro_comun(min,max,current.left)
+    elif min > current.value and max > current.value:
+      return self.ancestro_comun(min,max,current.right)
+    else:
+      return current.value
+  
+def sucesor_inmediato(self, k, current=None, sucesor=None):
+
+    if self.root is None:
+        return
+
+    if current is None:
+        current = self.root
+
+    if current is None:
+        return sucesor
+
+    # k menor
+    if k < current.value:
+
+        sucesor = current.value
+
+        return self.sucesor_inmediato(
+            k,
+            current.left,
+            sucesor
+        )
+
+    # k mayor
+    elif k > current.value:
+
+        return self.sucesor_inmediato(
+            k,
+            current.right,
+            sucesor
+        )
+
+    # encontrado
+    else:
+        return sucesor
+
+    
+
 
        

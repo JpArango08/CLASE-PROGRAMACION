@@ -232,7 +232,7 @@ print(g)
 g.eliminar_grado(2)
 print(g)
 """
-
+"""
 #Grafos pero las aristas tiene datos
 from typing import Any, Dict, List
 from collections import deque
@@ -270,56 +270,97 @@ b.add_edge("C", "D", 4, directed=False)
 b.add_edge("B", "D", 1, directed=False)
 
 print(b.adj_list)
+"""
 
-
-from typing import Any, List
+from typing import Any, Dict, List
+from collections import deque
 
 class Graph:
-    def __init__(self, vrl):
-        self.nodes: List[Any] = []
-        self.matriz: List[List[int]] = []
-        self.vlr: Any = vrl
-    
-    def add_vertex(self, value):
-        if value in self.nodes:
-            return
-        self.nodes.append(value)
-        for fila in self.matriz:
-            fila.append(self.vlr)
-        fila_new=[]
-        for _ in range(len(self.nodes)):
-            fila_new.append(self.vlr)
-        self.matriz.append(fila_new)
-    
-    def add_edge(self, start: Any, end: Any, w: Any, directed: bool = True):
-        if start not in self.nodes:
-            self.add_vertex(start)
-        if end not in self.nodes:
-            self.add_vertex(end)
-        self.matriz[self.nodes.index(start)][self.nodes.index(end)] = w
+  def __init__(self):
+    self.adj_list: Dict[Any, List[Any]] = {}
+    self.size: int = 0
 
-        if not directed and self.matriz[self.nodes.index(end)][self.nodes.index(start)] == self.vlr:
-           self.matriz[self.nodes.index(end)][self.nodes.index(start)] = w
-    
-    def __repr__(self):
-        if not self.nodes:
-            return "Graph vacío"
+  def add_vertex(self, value: Any) -> None:
+    if value in self.adj_list:
+      return None  # ya está el nodo
+    self.adj_list[value] = []
+    self.size += 1
 
-        # Encabezado de columnas
-        header = "     " + "  ".join(str(node) for node in self.nodes)
-        lines = [header]
+  def add_edge(self, vertex_1: Any, vertex_2: Any, directed: bool = True):
+    if vertex_1 not in self.adj_list:
+      self.add_vertex(vertex_1)
+    if vertex_2 not in self.adj_list:
+      self.add_vertex(vertex_2)
 
-        # Filas con su respectivo nodo
-        for i, row in enumerate(self.matriz):
-            line = f"{self.nodes[i]} | " + "  ".join(str(val) for val in row)
-            lines.append(line)
-        return "\n".join(lines)
+    # agregar la arista
+    if vertex_2 not in self.adj_list[vertex_1]:
+      self.adj_list[vertex_1].append(vertex_2)
 
-g = Graph(-1)
+    # si no es dirigido, agregar también la inversa
+    if not directed and vertex_1 not in self.adj_list[vertex_2]:
+      self.adj_list[vertex_2].append(vertex_1)
 
-g.add_edge("A", "B", 5, directed=False)
-g.add_edge("A", "C", 2, directed=False)
-g.add_edge("B", "D", 1, directed=False)
-g.add_edge("C", "D", 4, directed=False)
+  # -----------------------
+  # BÚSQUEDA EN PROFUNDIDAD (DFS)
+  # -----------------------
+  def dfs(self, start_vertex: Any) -> List[Any]:
+    if start_vertex not in self.adj_list:
+      return []
 
-print(g)
+    visited = []
+    stack = [start_vertex]
+
+    while stack:
+      vertex = stack.pop()
+      if vertex not in visited:
+        visited.append(vertex)
+        # Agregamos los vecinos en orden inverso para mantener un orden "natural"
+        for neighbor in reversed(self.adj_list[vertex]):
+          if neighbor not in visited:
+            stack.append(neighbor)
+
+
+    return visited
+
+  # -----------------------
+  # DFS RECURSIVO (un solo componente)
+  # -----------------------
+  def dfs_recursive(self, start_vertex: Any) -> List[Any]:
+    visited = []
+
+    def _dfs(vertex: Any):
+      visited.append(vertex)
+      for neighbor in self.adj_list[vertex]:
+        if neighbor not in visited:
+          _dfs(neighbor)
+
+    if start_vertex in self.adj_list:
+      _dfs(start_vertex)
+
+    return visited
+
+  # -----------------------
+  # BÚSQUEDA EN ANCHURA (BFS)
+  # -----------------------
+  def bfs(self, start_vertex: Any) -> List[Any]:
+    if start_vertex not in self.adj_list:
+      return []
+
+    visited = []
+    queue = deque([start_vertex])
+
+    while queue:
+      vertex = queue.popleft()
+      if vertex not in visited:
+        visited.append(vertex)
+        for neighbor in self.adj_list[vertex]:
+          if neighbor not in visited:
+            queue.append(neighbor)
+
+    return visited
+  
+  def __repr__(self):
+    result = ""
+    for vertex, neighbors in self.adj_list.items():
+      result += f"{vertex}: {neighbors}\n"
+    return result
