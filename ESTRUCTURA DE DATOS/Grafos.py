@@ -359,8 +359,83 @@ class Graph:
 
     return visited
   
+  def caminos(self):
+     cont=0
+     for clave,valor in self.adj_list.items():
+        
+        if len(valor) % 2 != 0:
+           cont += 1  
+        if cont > 2:
+          return False
+     return True
+  def circuito(self):
+     for clave,valor in self.adj_list.items():
+        if len(valor) % 2 != 0:
+           return False
+     return True
+  
+  def mira_camino(self, clave, visited= []):
+    for i, nodo in enumerate(self.adj_list[clave]):
+       if i > 0:
+          visited.pop()
+       visited.append(clave)
+       print("visitados", visited)
+       if nodo not in visited:
+        resultado = self.mira_camino(nodo, visited)
+        if len(visited) != len(self.adj_list):
+          return None
+        else:
+          return resultado
+        
+     
+  def camino_hamitanio(self):
+    for clave in self.adj_list:
+      resultado= self.mira_camino(clave)
+      print("camino hami", resultado)
+      if resultado:
+         return resultado
+    
+    
   def __repr__(self):
     result = ""
     for vertex, neighbors in self.adj_list.items():
       result += f"{vertex}: {neighbors}\n"
     return result
+
+# Caso de prueba para camino_hamitanio()
+
+g = Graph()
+
+# Crear un grafo con un camino hamiltoniano:
+# A -> B -> C -> D -> E
+# Caso de prueba para camino_hamitanio()
+
+g = Graph()
+
+# Crear un grafo con un camino hamiltoniano:
+# A -> B -> C -> D -> E
+
+g.add_edge("A", "B", directed=False)
+g.add_edge("B", "C", directed=False)
+g.add_edge("C", "D", directed=False)
+g.add_edge("D", "E", directed=False)
+
+print(g)
+
+resultado = g.camino_hamitanio()
+
+print(resultado)
+
+g.add_edge("B", "A", directed=True)
+g.add_edge("B", "V", directed=True)
+g.add_edge("B", "D", directed=True)
+g.add_edge("A", "A", directed=True)
+g.add_edge("V", "C", directed=True)
+g.add_edge("V", "X", directed=True)
+g.add_edge("C", "A", directed=True)
+
+print(g)
+
+resultado = g.camino_hamitanio()
+
+print(resultado)

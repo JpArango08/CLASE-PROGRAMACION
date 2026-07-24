@@ -4,7 +4,7 @@ app = Flask(__name__) #Nombre del archivo actual que está
 
 #Por cada ruta que vayamos a tener en el navegador creamos unas función en python
 
-@app.route("/") #Indica la ruta que llama a esta función
+@app.route("/formulario") #Indica la ruta que llama a esta función
 def hola():
     #Lo que la función retorne, llega en el cuerpo html al navegador
     nombre = request.args.get("nombre", "")
