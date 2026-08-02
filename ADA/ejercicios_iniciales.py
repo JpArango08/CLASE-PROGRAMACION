@@ -18,7 +18,7 @@ entrada = "a" * 300 + "z" + "x" + "a" * 300 + "y"
 salida_esperada = "z"
 print(strings(entrada))
 """
-
+"""
 def digito_s(s: str, primero: Any= None, ultimo: Any= None, pos= 0):
     if pos >= len(s):
         return primero, ultimo
@@ -46,9 +46,4 @@ salida_esperada = [74, 23, 92]
 
 print(digito(entrada))
         
-
-
-    
-
-    
-    
+"""
