@@ -17,6 +17,7 @@ print(combinaciones(comidas, bebidas))
 """
 def combinacion(vocales: str, dig: str) -> List[str]:
     conjunto: str = vocales + dig #O(v + d)
+
     contraseñas: List[str] = [] # O((l+d)!)
     for a in conjunto: #constante
         for b in conjunto: #constante
@@ -54,21 +55,95 @@ T= 75
 print(total_parejas(L,T))
 """
 
-
-def strings(s1: str, s2: str) -> int:
-    palabra : str = ""
-    cont: int = 0
-    for letra in s1:
-        if letra in s2:
-            palabra += letra
-        if palabra == s2:
-            cont += 1
-    return cont
+"""
+def strings(s1: str, s2: str) -> tuple[int, List[int]]:
+    pos_s2 = 0 #1
+    cont: int = 0 #1
+    ocurrence_index: List[int] = [] #O(n)
+    for i, letra in enumerate(s1): #O(n)
+        if s2[pos_s2] == letra:
+            pos_s2 += 1
+            if pos_s2 == len(s2):
+                cont += 1
+                pos_s2 = 0
+                ocurrence_index.append(i - (len(s2)-1) )
+        else:
+            pos_s2 = 0
+    return cont, ocurrence_index
 
 s1 = "asdfasdfeassfda"
 s2= "df"
-print(strings(s1, s2))
+print(strings(s1, s2)) 
+"""
+"""
+L = [3,4,5,6,5]
+suma_max = float("-inf")
+for i in range(len(L)):
+    sum = 0
+    for j in range(i, len(L)):
+        sum += L[j]
+        suma_max = max(sum, suma_max) """
+
+def permutacion(s: str) -> List[str]:
+    permutaciones = []
+    niveles = [""]
+    while niveles:
+        current = niveles.pop(0) #O(s!)
+        if len(current) == len(s): #O(1)
+            permutaciones.append(current)
+            continue
+        for char in s:
+            if char in current: #s -> tamaño de s ---> s**"2"
+                continue
+            niveles.append(current+char) #s
+    return permutaciones
+
+s= "asd"
+print(permutacion(s))
+"""
+def sub_lista(nums: List, k: int):
+        cont: int = 0
+        mayor_prom: int = 0
+        mayor_sub_arreglo: List = []
+        sub_arreglo: List = []
+        for n in nums:
+                cont += 1
+                sub_arreglo.append(n)
+                if cont == k:
+                        print(sub_arreglo)
+                        sum=0
+                        for s in sub_arreglo:
+                               sum += s
+                        if sum > mayor_prom:
+                                mayor_prom = sum
+                                mayor_sub_arreglo = sub_arreglo
+                        cont = 1
+                        sub_arreglo = []
+                        sub_arreglo.append(n)
+        return mayor_sub_arreglo
+
+L= [1,2,3,4,5,6,7,8,9]
+print(sub_lista(L,3))
+"""
+def max_valor(w: List, v: List, k: int) -> List[str]:
+    for n in w:
+        for m in w:
+            if m != n:
+                ...
+                
+
+
+
+                
+
+
+            
+
+            
+
+        
+        
         
 
-
-
+        
+    
