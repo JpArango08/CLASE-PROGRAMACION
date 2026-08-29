@@ -83,7 +83,7 @@ for i in range(len(L)):
     for j in range(i, len(L)):
         sum += L[j]
         suma_max = max(sum, suma_max) """
-
+"""
 def permutacion(s: str) -> List[str]:
     permutaciones = []
     niveles = [""]
@@ -100,6 +100,7 @@ def permutacion(s: str) -> List[str]:
 
 s= "asd"
 print(permutacion(s))
+"""
 """
 def sub_lista(nums: List, k: int):
         cont: int = 0
@@ -125,12 +126,7 @@ def sub_lista(nums: List, k: int):
 L= [1,2,3,4,5,6,7,8,9]
 print(sub_lista(L,3))
 """
-def max_valor(w: List, v: List, k: int) -> List[str]:
-    for n in w:
-        for m in w:
-            if m != n:
-                ...
-                
+
 
 
 

@@ -420,6 +420,8 @@ def nums(n: int, objetivo: int):
 n = 3
 objetivo = 5
 print(nums(n,objetivo))"""
+
+
 """
 def formar_equipos(personas: List[str], k: int):
     equipos: List[List[str]] = []
@@ -441,6 +443,8 @@ k = 3
 print(formar_equipos(personas, k))
 """
 
+
+"""
 def subconjuntos(L: List[int], objetivo: int):
     resultados: List[List[int]] = []
     niv= [[0,[],0]]
@@ -460,3 +464,144 @@ def subconjuntos(L: List[int], objetivo: int):
 L= [2,-3,5,7,-2]
 objetivo= 5
 print(subconjuntos(L, objetivo))
+"""
+"""
+import string
+def encontrar_codigo(codigo: str, longitud: int, abecedario = string.ascii_lowercase):
+    if len(codigo) != longitud:
+        return "Muy mala esa longitud, eh"
+    niv= [["",0]]
+    while niv:
+        current = niv.pop(0)
+        palabra = current[0]
+        intento = current[1]
+        if len(palabra) == longitud:
+            
+            if palabra == codigo:
+                return f"codigo: {palabra} en el intento: {intento}"
+            continue
+        for i in range(len(abecedario)):
+            intento += 1
+            niv.append([palabra+abecedario[i], intento])
+    return "No lo encontre wtf"
+#temporal: O(abecedario^n) espacial: (abecedario^n)
+cod= "a"
+longitud = 1
+print(encontrar_codigo(cod, longitud))
+"""
+"""
+def patron_dif(texto: str, patron: str):
+    resultados = []
+    for i in range(len(texto)):
+        palabra= ""
+        for j in range(i, len(texto)):
+            palabra += texto[j]
+            if len(palabra) == len(patron):
+                errores = 0
+                for k in range(len(patron)):
+                    if palabra[k] != patron[k]:
+                        errores += 1
+                if errores <= 2:
+                    resultados.append(i)
+                break
+    return resultados
+                
+
+
+
+#temporal: O(n*texto^n) espacial: O(r * texto^n)
+texto = "abcxefabcyabz"
+patron = "abcz"
+print(patron_dif(texto, patron))
+"""
+"""
+def proyectos_mejor_beneficio(beneficios: List[int], costos: List[int], presupuesto: int):
+    mejor_beneficio: int = 0
+    proyectos_mejores: List[int] = []
+    niv = [ [0, 0, 0, [ ] ] ]
+    while niv:
+        current = niv.pop(0)
+        posicion = current[0]
+        costo = current[1]
+        beneficio = current[2]
+        proyectos = current[3].copy()
+        if posicion == len(beneficios):
+            if beneficio > mejor_beneficio:
+                mejor_beneficio = beneficio
+                proyectos_mejores = proyectos.copy()
+            continue
+        if costos[posicion] + costo <= presupuesto:
+                niv.append([posicion+1, costos[posicion]+costo, beneficios[posicion]+beneficio, proyectos + [posicion]])
+        niv.append([posicion+1, costo, beneficio, proyectos ])
+    return proyectos_mejores
+#temporal: O(2^n) espacial: O(n2^n)
+beneficios = [8, 5, 12, 7, 10]
+costos     = [4, 3, 8, 5, 6]
+presupuesto = 3
+print(proyectos_mejor_beneficio(beneficios, costos, presupuesto))
+"""
+"""
+
+def permutaciones(L: List[int]):
+    resultado = []
+    niv = [[]]
+    while niv:
+        current = niv.pop(0)
+        if len(current) == len(L):
+            resultado.append(tuple(current))
+            continue
+        for i in range(len(L)):
+            current_copy= current.copy()
+            if L[i] in current:
+                continue
+            current_copy.append(L[i])
+            niv.append(current_copy)
+    return resultado
+L = [1, 2, 3]
+print(permutaciones(L))
+"""
+"""
+def pines():
+    resultados = []
+    for i in range(0,10):
+        for j in range(i+1, 10):
+            for m in range(j+1, 10):
+                for k in range(m+1, 10):
+                    if i + j + m + k == 18:
+                        resultados.append(str(i)+str(j)+str(m)+str(k))
+    return resultados
+print(pines())
+""" 
+"""         
+def equipos_compatibles(personas, k, incompatibles):
+    equipos = []
+    niv = [[0, []]]
+    while niv:
+        current = niv.pop(0)
+        if len(current[1]) == k:
+            incompatibilidad = None
+            for e_incompatible in incompatibles:
+                cont = 0
+                for personita in e_incompatible:
+                    if personita in current[1]:
+                        cont += 1
+                if cont == len(e_incompatible):
+                    incompatibilidad = True
+            if incompatibilidad:
+                continue
+            equipos.append(current[1])
+            continue
+        for i in range(current[0],len(personas)):
+            current_copy = current[1].copy()
+            if personas[i] not in current[1]:
+                current_copy.append(personas[i])
+                niv.append([i+1,current_copy])
+    return equipos
+personas = ["Ana", "Luis", "Carlos", "Sofia", "Pedro"]
+incompatibles = [
+    ("Ana", "Pedro"),
+    ("Luis", "Sofia")
+]
+k = 3
+print(equipos_compatibles(personas, k, incompatibles))
+"""
