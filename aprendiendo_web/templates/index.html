@@ -1,0 +1,21 @@
+
+<html>
+<head>
+    <title>SISTEMA DE DEVOLUCIONES DIGITALES</title>
+</head>
+<body>
+    <h1> Consulta el estado de tu devolucion </h1>
+    <form>
+        <label for="cod_devolucion">Codigo de devolución:</label>
+        <input type="text" id="cod_devolucion" name="cod_devolucion" placeholder="Ej: COD-123" required >
+        
+        <label for="correo_electronico"> Correo electrónico:</label>
+        <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Ej: tucorreo@gmail.com" required >
+        <br>
+        <button type="button" id="btn_consultar"> Consultar Devolución </button>
+    </form>
+    <p id="resultado"> </p>
+    <button> Registrar devolucion </button>
+    <script src="{{ url_for('static', filename='app.js') }}"></script> <!-- "Carga el archivo app.js que está dentro de static." -->
+</body>
+</html>
