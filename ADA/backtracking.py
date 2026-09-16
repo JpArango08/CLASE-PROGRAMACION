@@ -54,4 +54,4 @@ def empresa(N: int, C: List[str], K: int, L: List[str] = [], pos: int = 1):
     else:
         for letra in C:
             empresa(N, C, K, L + [letra], pos + 1)
-empresa(6, ["A","B"], 3)
+empresa(6, ["A","B","C"], 4)
