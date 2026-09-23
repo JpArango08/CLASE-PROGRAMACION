@@ -1,3 +1,4 @@
+"""
 def actividades_maximas(actividades):
     actividades.sort(key=lambda x: x[2]) #nlog(n)
     result = []
@@ -7,3 +8,5 @@ def actividades_maximas(actividades):
             result.append(act)
             final_actual = act[2]
     return result
+"""
+
