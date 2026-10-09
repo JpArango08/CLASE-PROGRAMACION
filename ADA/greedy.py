@@ -92,7 +92,7 @@ def area(l: List[int]):
     return area_max
 print(area([10,11,2,5,7,11,9]))
 """
-#ME DEBE 0.3
+
 """
 def cuerdas_costo_min(l: List[int]):
     costo: int = 0
@@ -126,5 +126,20 @@ print(actividades_max([1,3,0,5,8,5], [2,4,6,7,9,9]))
 """
         
 
+def k_menor(A: List[int], X:int, K:int ):
+    A.sort(key = lambda x: abs(x-X))
+    resultado: List[int]= []
+    for i in range(len(A)):
+        if abs(A[i] - X) >= K:
+            break
+        resultado.append(A[i])
+    return resultado
+
+print(k_menor(A = [10, 2, 14, 4, 7, 6],X = 5, K = 3))
+
+
+
+
+         
 
 

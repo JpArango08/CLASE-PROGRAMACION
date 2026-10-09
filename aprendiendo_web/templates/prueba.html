@@ -1,0 +1,339 @@
+<!DOCTYPE html><html class="h-full" lang="es" style=""><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Nivai — Convertimos ideas en proyectos reales</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#0052FF',
+              dark: '#003ecc',
+              light: '#3375ff',
+              glow: 'rgba(0, 82, 255, 0.45)',
+            },
+            charcoal: '#030816',
+          },
+          boxShadow: {
+            'mockup': '0 35px 80px -15px rgba(0, 8, 30, 0.9), 0 0 0 1px rgba(0, 82, 255, 0.2) inset',
+            'pill': '0 8px 32px -4px rgba(0, 30, 90, 0.4), 0 1px 2px rgba(0, 82, 255, 0.2)',
+            'toggle': '0 4px 16px rgba(0, 82, 255, 0.4)',
+            'glass': '0 20px 40px -15px rgba(0, 10, 40, 0.65)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Visual Styles -->
+<style data-purpose="background-geometry">
+    /* Deep navy background with subtle architectural glow */
+    .bg-cube-stage {
+      background-color: #030816;
+      background-image: 
+        radial-gradient(at 50% 10%, rgba(0, 82, 255, 0.22) 0px, transparent 65%),
+        radial-gradient(at 100% 100%, rgba(0, 38, 130, 0.35) 0px, transparent 60%),
+        linear-gradient(135deg, #050d21 0%, #020611 100%);
+      position: relative;
+    }
+
+    /* Architectural volumetric blueprint grid */
+    .bg-cube-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(0, 82, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 82, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 140px 140px, 140px 140px, 28px 28px, 28px 28px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+  </style>
+<style data-purpose="ui-grid-overlay">
+    /* Hairline blueprint grid dividing the hero card */
+    .hero-grid-pattern {
+      background-size: 160px 160px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 82, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 82, 255, 0.07) 1px, transparent 1px);
+    }
+  </style>
+<!-- END: Custom Visual Styles -->
+</head>
+<body class="bg-cube-stage min-h-screen text-slate-100 flex items-center justify-center p-3 md:p-8 xl:p-12 overflow-x-hidden selection:bg-brand selection:text-white antialiased font-sans"><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Nivai — Convertimos ideas en proyectos reales</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#0052FF',
+              dark: '#003ecc',
+              light: '#3375ff',
+              glow: 'rgba(0, 82, 255, 0.45)',
+            },
+            charcoal: '#030816',
+          },
+          boxShadow: {
+            'mockup': '0 35px 80px -15px rgba(0, 8, 30, 0.9), 0 0 0 1px rgba(0, 82, 255, 0.2) inset',
+            'pill': '0 8px 32px -4px rgba(0, 30, 90, 0.4), 0 1px 2px rgba(0, 82, 255, 0.2)',
+            'toggle': '0 4px 16px rgba(0, 82, 255, 0.4)',
+            'glass': '0 20px 40px -15px rgba(0, 10, 40, 0.65)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Visual Styles -->
+<style data-purpose="background-geometry">
+    /* Deep navy background with subtle architectural glow */
+    .bg-cube-stage {
+      background-color: #030816;
+      background-image: 
+        radial-gradient(at 50% 10%, rgba(0, 82, 255, 0.22) 0px, transparent 65%),
+        radial-gradient(at 100% 100%, rgba(0, 38, 130, 0.35) 0px, transparent 60%),
+        linear-gradient(135deg, #050d21 0%, #020611 100%);
+      position: relative;
+    }
+
+    /* Architectural volumetric blueprint grid */
+    .bg-cube-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(0, 82, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 82, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 140px 140px, 140px 140px, 28px 28px, 28px 28px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+  </style>
+<style data-purpose="ui-grid-overlay">
+    /* Hairline blueprint grid dividing the hero card */
+    .hero-grid-pattern {
+      background-size: 160px 160px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 82, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 82, 255, 0.07) 1px, transparent 1px);
+    }
+  </style>
+<!-- END: Custom Visual Styles -->
+
+<svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Nivai — Convertimos ideas en proyectos reales</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#0052FF',
+              dark: '#003ecc',
+              light: '#3375ff',
+              glow: 'rgba(0, 82, 255, 0.45)',
+            },
+            charcoal: '#030816',
+          },
+          boxShadow: {
+            'mockup': '0 35px 80px -15px rgba(0, 8, 30, 0.9), 0 0 0 1px rgba(0, 82, 255, 0.2) inset',
+            'pill': '0 8px 32px -4px rgba(0, 30, 90, 0.4), 0 1px 2px rgba(0, 82, 255, 0.2)',
+            'toggle': '0 4px 16px rgba(0, 82, 255, 0.4)',
+            'glass': '0 20px 40px -15px rgba(0, 10, 40, 0.65)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Visual Styles -->
+<style data-purpose="background-geometry">
+    /* Deep navy background with subtle architectural glow */
+    .bg-cube-stage {
+      background-color: #030816;
+      background-image: 
+        radial-gradient(at 50% 10%, rgba(0, 82, 255, 0.22) 0px, transparent 65%),
+        radial-gradient(at 100% 100%, rgba(0, 38, 130, 0.35) 0px, transparent 60%),
+        linear-gradient(135deg, #050d21 0%, #020611 100%);
+      position: relative;
+    }
+
+    /* Architectural volumetric blueprint grid */
+    .bg-cube-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(0, 82, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 82, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 140px 140px, 140px 140px, 28px 28px, 28px 28px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+  </style>
+<style data-purpose="ui-grid-overlay">
+    /* Hairline blueprint grid dividing the hero card */
+    .hero-grid-pattern {
+      background-size: 160px 160px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 82, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 82, 255, 0.07) 1px, transparent 1px);
+    }
+  </style>
+<!-- END: Custom Visual Styles -->
+
+
+<!-- BEGIN: Master Mockup Container -->
+<main class="w-full max-w-[1360px] h-auto lg:h-[860px] bg-[#050d21]/90 rounded-[2rem] shadow-mockup border border-[#0052FF]/30 relative overflow-hidden flex flex-col justify-between backdrop-blur-xl" data-purpose="application-frame">
+<!-- Architectural Grid Background Layer -->
+<div class="absolute inset-0 hero-grid-pattern pointer-events-none z-0"></div>
+<!-- Ambient Glow Accents -->
+<div class="absolute -top-32 -left-32 w-96 h-96 bg-brand/15 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/4 right-0 w-[500px] h-[500px] bg-brand/10 rounded-full blur-3xl pointer-events-none"></div>
+<!-- 3D Organic Wave Bottom Landscape -->
+<div class="absolute inset-x-0 bottom-0 h-[62%] pointer-events-none select-none z-10 overflow-hidden" data-purpose="3d-dunes-background">
+<img alt="Minimalist clean 3D render of smooth flowing abstract waves and architectural organic ridges, deep rich vibrant cobalt electric blue and ultramarine lighting" class="w-full h-full object-cover object-bottom filter contrast-[1.08] brightness-[1.05]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjDs5f5T8TxmTBYZJ2zXmQCwm0BL5GC8Zv3xQ_lN0EBlto1C-YqhAefJ8JMwQYgbey9m8KBuZSCAG85vTOIk956XbN39_nWNJ5NHXKexDFUtsmT6CbityQc_Nejk58VzZJEraJvkS_-OyeF-AkNSHyNhNZs22g6JXb1Pp5aSGnShyFbE4U52srzHOoK6nvBmjmnCw6O23uQm1YHsi0cSXvs2zT5wAR7wFkXnmzwYXtrm9x5cM7qq8">
+<!-- Soft blend gradient overlay at the base for refined contrast -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#030816]/70 via-transparent to-[#050d21]/30"></div>
+</div>
+<!-- BEGIN: Top Navigation Bar -->
+<header class="relative z-30 flex items-center justify-between px-8 md:px-14 pt-8 md:pt-10 pb-4" data-purpose="main-navigation">
+<!-- Nivai Brandmark -->
+<a aria-label="Nivai Homepage" class="group flex items-center gap-3 transition-opacity duration-200 hover:opacity-90" href="#">
+<div class="w-10 h-8 flex items-center justify-center -ml-1 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_12px_rgba(0,82,255,0.6)]">
+<svg class="w-full h-full" fill="none" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="navBlueGrad" x1="0%" x2="100%" y1="0%">
+<stop offset="0%" stop-color="#3882FF"></stop>
+<stop offset="100%" stop-color="#0052FF"></stop>
+</linearGradient>
+</defs>
+<!-- Top node -->
+<circle cx="48" cy="36" fill="#3882FF" r="6"></circle>
+<!-- Stem -->
+<path d="M48 36 C55 34 65 30 76 28" stroke="#3882FF" stroke-linecap="round" stroke-width="4.5"></path>
+<!-- Outline -->
+<path d="M42 90 H118 C132 90 144 79 144 65 C144 52 133 42 120 41 C117 28 105 18 90 18 C78 18 68 25 63 35 C58 33 52 33 46 36 C34 40 26 51 26 64 C26 78 37 90 51 90" stroke="url(#navBlueGrad)" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"></path>
+<!-- Center N -->
+<path d="M56 80 V48 L76 74 V48 H86 V80 L66 54 V80 Z" fill="#ffffff"></path>
+<!-- Dot -->
+<circle cx="98" cy="68" fill="#3882FF" r="5"></circle>
+</svg>
+</div>
+<span class="text-2xl md:text-[26px] font-extrabold tracking-[-0.04em] text-white lowercase transition-colors">NIVAI</span>
+</a>
+<!-- Circular Hamburger Button -->
+<button aria-label="Abrir menú de navegación" class="w-12 h-12 md:w-13 md:h-13 rounded-full bg-[#0052FF] text-white flex flex-col items-center justify-center gap-[5px] shadow-[0_0_20px_rgba(0,82,255,0.45)] hover:bg-[#1a66ff] transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 focus:ring-offset-[#050d21]" data-purpose="menu-toggle" type="button">
+<span class="w-5 h-[1.75px] bg-white rounded-full transition-transform duration-200"></span>
+<span class="w-5 h-[1.75px] bg-white rounded-full transition-transform duration-200"></span>
+<span class="w-5 h-[1.75px] bg-white rounded-full transition-transform duration-200"></span>
+</button>
+</header>
+<!-- END: Top Navigation Bar -->
+<!-- BEGIN: Main Hero Body Content -->
+<section class="relative z-30 px-8 md:px-14 pt-2 md:pt-4 flex-1 flex flex-col justify-start" data-purpose="hero-headline-section">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Big Headline with Embedded Interactive Pill -->
+<div class="lg:col-span-8 select-none">
+<div class="space-y-0.5 md:space-y-1">
+<!-- Line 1: Elegant Luminous Ice-Blue Accent Text -->
+<h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-bold tracking-[-0.04em] text-[#93c5fd] leading-[1.06] drop-shadow-[0_2px_12px_rgba(0,82,255,0.25)]">
+              Convertimos ideas
+            </h1>
+<!-- Line 2: Inline Toggle + Punchy Crisp White Title -->
+<h2 class="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-bold tracking-[-0.04em] text-white leading-[1.06] drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)]">en proyectos reales.</h2>
+</div>
+</div>
+<!-- Right Column: Translucent Overview Pill Card (Reference Position) -->
+<div class="lg:col-span-4 flex justify-start lg:justify-end pt-4 lg:pt-2" data-purpose="top-right-feature-card">
+<div class="relative max-w-sm w-full">
+<!-- Number Counter Tag (01) -->
+<div class="absolute -top-3 left-4 z-20 flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-[#0052FF] text-white text-xs font-mono font-bold flex items-center justify-center shadow-[0_0_12px_rgba(0,82,255,0.6)] ring-2 ring-[#050d21]">
+                01
+              </span>
+</div>
+<!-- Translucent Card Box with Chamfered Soft Curves -->
+<div class="bg-[rgba(5,18,48,0.7)] backdrop-blur-[16px] border border-[#0052FF]/35 rounded-3xl p-6 pt-7 shadow-pill hover:shadow-[0_8px_32px_rgba(0,82,255,0.3)] transition-all duration-300 hover:border-[#0052FF]/60 group">
+<p class="text-sm md:text-[14.5px] leading-relaxed text-[#cbd5e1] font-medium">
+<span class="text-white font-semibold group-hover:text-[#93c5fd] transition-colors">Nivai</span> desarrolla tecnología e ideas innovadoras para convertirlas en proyectos tangibles de alto impacto y valor añadido para compañías con visión de futuro.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Main Hero Body Content -->
+<!-- BEGIN: Bottom Interaction Bar -->
+<footer class="relative z-30 px-8 md:px-14 pb-8 md:pb-10 pt-16 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6" data-purpose="bottom-bar">
+<!-- Scroll Indicator (Bottom Left) -->
+<a class="inline-flex items-center gap-2.5 text-[#93c5fd] hover:text-white text-xs md:text-sm font-semibold tracking-wide transition-colors group cursor-pointer" data-purpose="scroll-down-action" href="#explore">
+<div class="w-7 h-7 rounded-full bg-[#07173d]/90 border border-[#0052FF]/50 flex items-center justify-center transition-transform group-hover:translate-y-1 shadow-[0_0_12px_rgba(0,82,255,0.35)] group-hover:bg-[#0052FF]">
+<svg class="w-3.5 h-3.5 text-[#bfdbfe] group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="drop-shadow-sm">Scroll Down</span>
+</a>
+<!-- Mission Floating Capsule (Bottom Right) -->
+<div class="w-full sm:w-auto max-w-xl bg-[rgba(4,15,40,0.85)] backdrop-blur-xl border border-[#0052FF]/40 rounded-2xl md:rounded-full p-2.5 md:p-3 shadow-glass flex flex-col md:flex-row items-start md:items-center gap-3.5 transition-transform duration-300 hover:scale-[1.01] hover:border-[#0052FF]/60" data-purpose="mission-capsule">
+<!-- Pill Tag -->
+<span class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-[#0052FF] text-white font-bold text-xs md:text-[13px] tracking-tight whitespace-nowrap shadow-[0_0_14px_rgba(0,82,255,0.5)]">
+          Nuestra misión
+        </span>
+<!-- Mission Copy -->
+<p class="text-[#e0e7ff] text-xs md:text-[13px] leading-relaxed pr-3 font-normal">
+          Impulsar y acelerar la transformación de ideas en soluciones tecnológicas listas para producción y escala global.
+        </p>
+</div>
+</footer>
+<!-- END: Bottom Interaction Bar -->
+</main>
+<!-- END: Master Mockup Container -->
+
+
+</body></html>
